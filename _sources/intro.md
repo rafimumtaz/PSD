@@ -1,11 +1,11 @@
-# Welcome to your Jupyter Book
+---
+title: Beranda
+---
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+# Selamat datang, ini adalah profile saya 👋
 
-Check out the content pages bundled with this sample book to see more.
+Ini adalah **website statis** yang dibangun menggunakan **Jupyter Book**. Nama saya **Hajjid Rafi Mumtaz** dengan NIM : **230411100078** Mahasiswa Teknik Informatika Universitas Trunojoyo Madura Semester 5.
+Email : **rafimumtaz86@gmail.com**
 
 ```{tableofcontents}
 ```
