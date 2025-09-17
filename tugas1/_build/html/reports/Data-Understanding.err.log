@@ -36,19 +36,39 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from matplotlib import rcParams, cycler
-import matplotlib.pyplot as plt
-import numpy as np
-plt.ion()
+import pandas as pd
+from sklearn.datasets import load_iris
+from IPython.display import display
+
+IRIS = load_iris()
+
+columns_clean = [col.replace(" (cm)", "") for col in IRIS.feature_names]
+df = pd.DataFrame(data=IRIS.data, columns=columns_clean)
+
+df['species'] = IRIS.target + 1
+
+df['species_name'] = df['species'].map({1: 'setosa', 2: 'versicolor', 3: 'virginica'})
+
+df.insert(0, 'id', range(1, len(df)+1))
+
+print("Dataset Iris berhasil dimuat")
+print(f"Ukuran dataset: {df.shape[0]} baris, {df.shape[1]} kolom")
+
+pd.options.display.float_format = "{:.1f}".format
+
+display(
+    df.head().style.format("{:.1f}", subset=df.columns[1:5]).hide(axis="index")
+)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m rcParams, cycler
-[32m      2[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mmatplotlib[39;00m[34;01m.[39;00m[34;01mpyplot[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mplt[39;00m
-[32m      3[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mnp[39;00m
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 2[39m
+[32m      1[39m [38;5;28;01mimport[39;00m[38;5;250m [39m[34;01mpandas[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[34;01mpd[39;00m
+[32m----> [39m[32m2[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01msklearn[39;00m[34;01m.[39;00m[34;01mdatasets[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m load_iris
+[32m      3[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01mIPython[39;00m[34;01m.[39;00m[34;01mdisplay[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m display
+[32m      5[39m IRIS = load_iris()
 
-[31mModuleNotFoundError[39m: No module named 'matplotlib'
+[31mModuleNotFoundError[39m: No module named 'sklearn'
 

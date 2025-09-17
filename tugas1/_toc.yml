@@ -7,5 +7,5 @@ chapters:
 - file: Business-Understanding
 - file: Data-Understanding
   sections:
-  - file: Data-Exploration
+    - file: Data-Exploration
 - file: Data-Preprocessing
