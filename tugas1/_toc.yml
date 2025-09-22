@@ -9,3 +9,4 @@ chapters:
   sections:
     - file: Data-Exploration
 - file: Data-Preprocessing
+- file: PCA-LDA
