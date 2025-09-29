@@ -400,6 +400,7 @@ document.write(`
 <span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">BaggingClassifier</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
@@ -409,8 +410,6 @@ document.write(`
 
 <span class="c1"># === AMBIL DATA ===</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM ecoli&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
-
-<span class="c1"># tampilkan 5 baris pertama</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 
 <span class="c1"># === PISAHKAN FITUR DAN LABEL ===</span>
@@ -422,7 +421,7 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_raw</span><span class="p">)</span>
 <span class="n">target_names</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">classes_</span>
 
-<span class="c1"># Standarisasi fitur (Naive Bayes bisa lebih stabil dengan ini)</span>
+<span class="c1"># Standarisasi fitur</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 
@@ -476,13 +475,11 @@ document.write(`
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">color</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">target_name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">target_names</span><span class="p">)),</span> <span class="n">target_names</span><span class="p">):</span>
-    <span class="c1"># titik asli</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
         <span class="n">X_r_bal</span><span class="p">[(</span><span class="n">y_res</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">is_synthetic</span> <span class="o">==</span> <span class="kc">False</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
         <span class="n">X_r_bal</span><span class="p">[(</span><span class="n">y_res</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">is_synthetic</span> <span class="o">==</span> <span class="kc">False</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span>
         <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target_name</span><span class="si">}</span><span class="s2"> (original)&quot;</span>
     <span class="p">)</span>
-    <span class="c1"># titik synthetic</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
         <span class="n">X_r_bal</span><span class="p">[(</span><span class="n">y_res</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">is_synthetic</span> <span class="o">==</span> <span class="kc">True</span><span class="p">),</span> <span class="mi">0</span><span class="p">],</span>
         <span class="n">X_r_bal</span><span class="p">[(</span><span class="n">y_res</span> <span class="o">==</span> <span class="n">i</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">is_synthetic</span> <span class="o">==</span> <span class="kc">True</span><span class="p">),</span> <span class="mi">1</span><span class="p">],</span>
@@ -492,43 +489,35 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PCA of Balanced Ecoli dataset (SMOTE)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
+<span class="c1"># === Fungsi evaluasi model ===</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_model</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Evaluasi </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> ===&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
+                <span class="n">xticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Confusion Matrix </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
 <span class="c1"># === KLASIFIKASI SEBELUM BALANCING ===</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
-<span class="n">clf_before</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">clf_before</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<span class="n">y_pred_before</span> <span class="o">=</span> <span class="n">clf_before</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Evaluasi Naive Bayes Sebelum Balancing ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_before</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_before</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-
-<span class="c1"># Confusion Matrix sebelum balancing</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_before</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
-            <span class="n">xticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix Sebelum Balancing&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="s2">&quot;Naive Bayes (Sebelum Balancing)&quot;</span><span class="p">,</span> <span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="s2">&quot;Random Forest (Sebelum Balancing)&quot;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="s2">&quot;Bagging (Sebelum Balancing)&quot;</span><span class="p">,</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 
 <span class="c1"># === KLASIFIKASI SESUDAH BALANCING ===</span>
 <span class="n">X_train_res</span><span class="p">,</span> <span class="n">X_test_res</span><span class="p">,</span> <span class="n">y_train_res</span><span class="p">,</span> <span class="n">y_test_res</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_res</span><span class="p">)</span>
-<span class="n">clf_after</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
-<span class="n">clf_after</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_res</span><span class="p">,</span> <span class="n">y_train_res</span><span class="p">)</span>
-<span class="n">y_pred_after</span> <span class="o">=</span> <span class="n">clf_after</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_res</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== Evaluasi Naive Bayes Sesudah Balancing ===&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi:&quot;</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_res</span><span class="p">,</span> <span class="n">y_pred_after</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_res</span><span class="p">,</span> <span class="n">y_pred_after</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">zero_division</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-
-<span class="c1"># Confusion Matrix sesudah balancing</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_res</span><span class="p">,</span> <span class="n">y_pred_after</span><span class="p">),</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span>
-            <span class="n">xticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">target_names</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greens&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Confusion Matrix Sesudah Balancing (SMOTE)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Actual&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="s2">&quot;Naive Bayes (Sesudah Balancing)&quot;</span><span class="p">,</span> <span class="n">GaussianNB</span><span class="p">(),</span> <span class="n">X_train_res</span><span class="p">,</span> <span class="n">X_test_res</span><span class="p">,</span> <span class="n">y_train_res</span><span class="p">,</span> <span class="n">y_test_res</span><span class="p">)</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="s2">&quot;Random Forest (Sesudah Balancing)&quot;</span><span class="p">,</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">X_train_res</span><span class="p">,</span> <span class="n">X_test_res</span><span class="p">,</span> <span class="n">y_train_res</span><span class="p">,</span> <span class="n">y_test_res</span><span class="p">)</span>
+<span class="n">evaluate_model</span><span class="p">(</span><span class="s2">&quot;Bagging (Sesudah Balancing)&quot;</span><span class="p">,</span> <span class="n">BaggingClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span> <span class="n">X_train_res</span><span class="p">,</span> <span class="n">X_test_res</span><span class="p">,</span> <span class="n">y_train_res</span><span class="p">,</span> <span class="n">y_test_res</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -556,7 +545,7 @@ Distribusi kelas sebelum balancing: {&#39;cp&#39;: 143, &#39;im&#39;: 77, &#39;i
 </div>
 <img alt="_images/de8cb53192acbf36b19d213048c2acc5231e05264e416f62b87a34c13e4961fd.png" src="_images/de8cb53192acbf36b19d213048c2acc5231e05264e416f62b87a34c13e4961fd.png" />
 <img alt="_images/f6bc828f0b2c0ff077816523118bc4b2d528616098afa3bc64fe668178ba1e6c.png" src="_images/f6bc828f0b2c0ff077816523118bc4b2d528616098afa3bc64fe668178ba1e6c.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Naive Bayes Sebelum Balancing ===
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Naive Bayes (Sebelum Balancing) ===
 Akurasi: 0.7821782178217822
               precision    recall  f1-score   support
 
@@ -574,8 +563,46 @@ Akurasi: 0.7821782178217822
 weighted avg       0.73      0.78      0.74       101
 </pre></div>
 </div>
-<img alt="_images/bc86297e56fa909fdc9b5ebe47e5a3d0ba928836146a12ba38f2ea9b873a8445.png" src="_images/bc86297e56fa909fdc9b5ebe47e5a3d0ba928836146a12ba38f2ea9b873a8445.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Naive Bayes Sesudah Balancing ===
+<img alt="_images/c101ba206077db2f9c4e59f3fb3ba3d13f371c3509dcb7192039d8c0bcabcd54.png" src="_images/c101ba206077db2f9c4e59f3fb3ba3d13f371c3509dcb7192039d8c0bcabcd54.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Random Forest (Sebelum Balancing) ===
+Akurasi: 0.8217821782178217
+              precision    recall  f1-score   support
+
+          cp       0.93      1.00      0.97        43
+          im       0.73      0.70      0.71        23
+         imL       0.00      0.00      0.00         1
+         imS       0.00      0.00      0.00         1
+         imU       0.46      0.60      0.52        10
+          om       1.00      0.83      0.91         6
+         omL       0.50      1.00      0.67         1
+          pp       0.92      0.75      0.83        16
+
+    accuracy                           0.82       101
+   macro avg       0.57      0.61      0.58       101
+weighted avg       0.82      0.82      0.82       101
+</pre></div>
+</div>
+<img alt="_images/06e7c34ceea923285de064434265d67f5ec599e0fed83e828d65a9a0ea16d13f.png" src="_images/06e7c34ceea923285de064434265d67f5ec599e0fed83e828d65a9a0ea16d13f.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Bagging (Sebelum Balancing) ===
+Akurasi: 0.8217821782178217
+              precision    recall  f1-score   support
+
+          cp       0.91      1.00      0.96        43
+          im       0.70      0.70      0.70        23
+         imL       0.00      0.00      0.00         1
+         imS       0.00      0.00      0.00         1
+         imU       0.46      0.60      0.52        10
+          om       1.00      1.00      1.00         6
+         omL       1.00      1.00      1.00         1
+          pp       1.00      0.69      0.81        16
+
+    accuracy                           0.82       101
+   macro avg       0.63      0.62      0.62       101
+weighted avg       0.82      0.82      0.82       101
+</pre></div>
+</div>
+<img alt="_images/071ee7caeefc1378610a0006fdea0399bc21ca286b7b44b5eff07d36cf4d155b.png" src="_images/071ee7caeefc1378610a0006fdea0399bc21ca286b7b44b5eff07d36cf4d155b.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Naive Bayes (Sesudah Balancing) ===
 Akurasi: 0.8226744186046512
               precision    recall  f1-score   support
 
@@ -593,7 +620,45 @@ Akurasi: 0.8226744186046512
 weighted avg       0.87      0.82      0.81       344
 </pre></div>
 </div>
-<img alt="_images/d5afc9e3f62771c5e6b3d4bb4ef2d8760d5bd7a8c2ba08037d7a9f32c21633cf.png" src="_images/d5afc9e3f62771c5e6b3d4bb4ef2d8760d5bd7a8c2ba08037d7a9f32c21633cf.png" />
+<img alt="_images/d04e44271d31edb55f9d2ff08d0bd42c18ba9b07ee31f193d7d062f21ed08f11.png" src="_images/d04e44271d31edb55f9d2ff08d0bd42c18ba9b07ee31f193d7d062f21ed08f11.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Random Forest (Sesudah Balancing) ===
+Akurasi: 0.9447674418604651
+              precision    recall  f1-score   support
+
+          cp       0.90      1.00      0.95        43
+          im       0.85      0.81      0.83        43
+         imL       1.00      1.00      1.00        43
+         imS       1.00      1.00      1.00        43
+         imU       0.88      0.86      0.87        43
+          om       1.00      0.93      0.96        43
+         omL       1.00      1.00      1.00        43
+          pp       0.93      0.95      0.94        43
+
+    accuracy                           0.94       344
+   macro avg       0.95      0.94      0.94       344
+weighted avg       0.95      0.94      0.94       344
+</pre></div>
+</div>
+<img alt="_images/60189ef8bb766f38a3873c0d046dad48a8461e3b336bd88f813e57b4511ea1ac.png" src="_images/60189ef8bb766f38a3873c0d046dad48a8461e3b336bd88f813e57b4511ea1ac.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== Evaluasi Bagging (Sesudah Balancing) ===
+Akurasi: 0.9273255813953488
+              precision    recall  f1-score   support
+
+          cp       0.87      0.95      0.91        43
+          im       0.89      0.79      0.84        43
+         imL       1.00      1.00      1.00        43
+         imS       1.00      1.00      1.00        43
+         imU       0.86      0.86      0.86        43
+          om       0.95      0.86      0.90        43
+         omL       1.00      1.00      1.00        43
+          pp       0.85      0.95      0.90        43
+
+    accuracy                           0.93       344
+   macro avg       0.93      0.93      0.93       344
+weighted avg       0.93      0.93      0.93       344
+</pre></div>
+</div>
+<img alt="_images/4c8dc6a659522fc79c0bac1484f7dbf91dad93ab779fcfac67ae0fdd81890b48.png" src="_images/4c8dc6a659522fc79c0bac1484f7dbf91dad93ab779fcfac67ae0fdd81890b48.png" />
 </div>
 </div>
 <p>Dalam proyek ini, dataset Ecoli yang digunakan memiliki distribusi kelas yang sangat tidak seimbang. Sebagai contoh, beberapa kelas minoritas ekstrem hanya memiliki 2–5 sampel, sedangkan kelas mayoritas memiliki lebih dari 100 sampel:</p>
