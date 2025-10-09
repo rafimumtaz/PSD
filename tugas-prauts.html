@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tugas pra-UTS PSD &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'tugas-prauts';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="PCA-LDA DATASET ECOLI" href="PCA-LDA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Selamat datang, ini adalah profile saya 👋
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Business-Understanding.html">Business Understanding: Iris Flower Classification</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Data-Understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Data-Exploration.html">Data Exploration</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="Data-Preprocessing.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PCA-LDA.html">PCA-LDA DATASET ECOLI</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tugas pra-UTS PSD</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftugas-prauts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/tugas-prauts.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tugas pra-UTS PSD</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-e-coli-menggunakan-knime-postgresql-dan-python-untuk-prediksi-klasifikasi-protein">Analisis Data E. coli Menggunakan KNIME, PostgreSQL, dan Python untuk Prediksi Klasifikasi Protein</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oleh-hajjid-rafi-mumtaz">Oleh : Hajjid Rafi Mumtaz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-teknologi-yang-diperlukan">1. Instalasi teknologi yang diperlukan.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-dan-mengkonfigurasi-environment-conda">1.1 Membuat dan Mengkonfigurasi Environment Conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengintegrasikan-python-dengan-knime">1.2 Mengintegrasikan Python dengan KNIME</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membangun-alur-kerja-workflow-di-knime">2. Membangun Alur Kerja (Workflow) di KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-postgresql">2.1 Koneksi ke Database PostgreSQL.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksekusi-script-python-untuk-pemrosesan-data">2.2. Eksekusi Script Python untuk Pemrosesan Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-dan-output">3. Analisis Hasil dan Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-dari-script-python">3.1 Output dari Script Python.</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tugas-pra-uts-psd">
+<h1>Tugas pra-UTS PSD<a class="headerlink" href="#tugas-pra-uts-psd" title="Link to this heading">#</a></h1>
+<section id="analisis-data-e-coli-menggunakan-knime-postgresql-dan-python-untuk-prediksi-klasifikasi-protein">
+<h2>Analisis Data E. coli Menggunakan KNIME, PostgreSQL, dan Python untuk Prediksi Klasifikasi Protein<a class="headerlink" href="#analisis-data-e-coli-menggunakan-knime-postgresql-dan-python-untuk-prediksi-klasifikasi-protein" title="Link to this heading">#</a></h2>
+<section id="oleh-hajjid-rafi-mumtaz">
+<h3>Oleh : Hajjid Rafi Mumtaz<a class="headerlink" href="#oleh-hajjid-rafi-mumtaz" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section id="instalasi-teknologi-yang-diperlukan">
+<h2>1. Instalasi teknologi yang diperlukan.<a class="headerlink" href="#instalasi-teknologi-yang-diperlukan" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>KNIME Analytics Platform: Alat utama untuk membangun alur kerja visual.</p></li>
+<li><p>Miniforge (Conda): Untuk manajemen environment Python yang terisolasi.</p></li>
+<li><p>PostgreSQL: Database tempat data disimpan.</p></li>
+</ul>
+<section id="membuat-dan-mengkonfigurasi-environment-conda">
+<h3>1.1 Membuat dan Mengkonfigurasi Environment Conda<a class="headerlink" href="#membuat-dan-mengkonfigurasi-environment-conda" title="Link to this heading">#</a></h3>
+<p>Kita memerlukan environment Python khusus yang berisi semua library yang dibutuhkan oleh KNIME.</p>
+<ol class="arabic simple">
+<li><p>Buka Miniforge Prompt.</p></li>
+<li><p>Buat environment baru bernama tugaspsd (atau nama lain yang sesuai) dengan perintah:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="n">tugaspsd</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.9</span> <span class="n">pandas</span> <span class="n">psycopg2</span><span class="o">-</span><span class="n">binary</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span> <span class="n">matplotlib</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;conda&#39;</span><span class="p">,</span> <span class="s1">&#39;create --name tugaspsd python=3.9 pandas psycopg2-binary scikit-learn matplotlib -y&#39;</span><span class="p">)</span>
+
+<span class="nn">File C:\xampp\htdocs\PSDs\.venv\Lib\site-packages\IPython\core\interactiveshell.py:2504,</span> in <span class="ni">InteractiveShell.run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2502</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2503</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2504</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2506</span> <span class="c1"># The code below prevents the output from being displayed</span>
+<span class="g g-Whitespace">   </span><span class="mi">2507</span> <span class="c1"># when using magics with decorator @output_can_be_silenced</span>
+<span class="g g-Whitespace">   </span><span class="mi">2508</span> <span class="c1"># when the last Python token in the expression is a &#39;;&#39;.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2509</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">magic</span><span class="o">.</span><span class="n">MAGIC_OUTPUT_CAN_BE_SILENCED</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+
+<span class="nn">File C:\xampp\htdocs\PSDs\.venv\Lib\site-packages\IPython\core\magics\packaging.py:27,</span> in <span class="ni">is_conda_environment.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="c1"># TODO: does this need to change on windows?</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="s2">&quot;conda-meta&quot;</span><span class="p">,</span> <span class="s2">&quot;history&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+<span class="ne">---&gt; </span><span class="mi">27</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span>         <span class="s2">&quot;The python kernel does not appear to be a conda environment.  &quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span>         <span class="s2">&quot;Please use ``%pip install`` instead.&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span>     <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: The python kernel does not appear to be a conda environment.  Please use ``%pip install`` instead.
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Aktifkan environment:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">tugaspsd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Install library imbalanced-learn dari channel conda-forge:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">imbalanced</span><span class="o">-</span><span class="n">learn</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengintegrasikan-python-dengan-knime">
+<h3>1.2 Mengintegrasikan Python dengan KNIME<a class="headerlink" href="#mengintegrasikan-python-dengan-knime" title="Link to this heading">#</a></h3>
+<p>Langkah krusial adalah menghubungkan KNIME dengan environment Conda yang baru dibuat.</p>
+<ol class="arabic simple">
+<li><p>Buka KNIME, lalu navigasi ke File &gt; Preferences.</p></li>
+<li><p>Pilih KNIME &gt; Python Integration.</p></li>
+<li><p>Pilih opsi Conda dan pilih environment tugaspsd dari daftar. Jika tidak terdeteksi, pilih Manual dan arahkan ke file python.exe di dalam folder environment Anda (contoh: D:\miniforge3\envs\tugaspsd\python.exe).</p></li>
+<li><p>Klik Apply and Close.</p></li>
+</ol>
+<p><img alt="install extension python pada KNIME" src="_images/Screenshot_45.png" />
+<img alt="integrasi python pada KNIME" src="_images/Screenshot_51.png" /></p>
+</section>
+</section>
+<section id="membangun-alur-kerja-workflow-di-knime">
+<h2>2. Membangun Alur Kerja (Workflow) di KNIME<a class="headerlink" href="#membangun-alur-kerja-workflow-di-knime" title="Link to this heading">#</a></h2>
+<section id="koneksi-ke-database-postgresql">
+<h3>2.1 Koneksi ke Database PostgreSQL.<a class="headerlink" href="#koneksi-ke-database-postgresql" title="Link to this heading">#</a></h3>
+<p>Dua node utama digunakan untuk mengambil data:</p>
+<ol class="arabic simple">
+<li><p>PostgreSQL Connector: Node ini dikonfigurasi dengan kredensial database (host, port, nama database, username, dan password) untuk membuat koneksi.</p></li>
+<li><p>DB Table Selector: Node ini menerima koneksi dari node sebelumnya dan digunakan untuk memilih tabel yang akan digunakan.</p></li>
+<li><p>DB Reader: Node ini menerima koneksi dari node sebelumnya dan mengeksekusi query SQL sederhana untuk mengambil seluruh data dari tabel ecoli. Contoh query: SELECT * FROM ecoli;</p></li>
+</ol>
+<p>jangan lupa untuk menginstall dan mengintegrasikan Driver PostgreSQL sebelum melakukan koneksi.</p>
+<ul class="simple">
+<li><p>langkah integrasi driver
+<img alt="integrasi Driver PostgreSQL" src="_images/Screenshot_46.png" />
+<img alt="integrasi Driver PostgreSQL" src="_images/Screenshot_47.png" /></p></li>
+<li><p>workflow/nodes yang digunakan
+<img alt="workflow" src="_images/Screenshot_44.png" /></p></li>
+<li><p>koneksi postgre connector
+<img alt="integrasi Driver PostgreSQL" src="_images/Screenshot_48.png" /></p></li>
+<li><p>table selector
+<img alt="integrasi Driver PostgreSQL" src="_images/Screenshot_49.png" /></p></li>
+<li><p>Hasil yang ditampilkan oleh DB Reader
+<img alt="integrasi Driver PostgreSQL" src="_images/Screenshot_50.png" /></p></li>
+</ul>
+</section>
+<section id="eksekusi-script-python-untuk-pemrosesan-data">
+<h3>2.2. Eksekusi Script Python untuk Pemrosesan Data<a class="headerlink" href="#eksekusi-script-python-untuk-pemrosesan-data" title="Link to this heading">#</a></h3>
+<p>Inti dari analisis ini berada di dalam satu node Python Script. Node ini menerima tabel data dari DB Query Reader sebagai input dan menjalankan serangkaian tugas kompleks:</p>
+<ol class="arabic simple">
+<li><p>Penanganan missing value: Mengisi nilai numerik yang kosong dengan median.</p></li>
+<li><p>Deteksi Outlier: Menggunakan metode IQR untuk mengidentifikasi dan memisahkan data outlier.</p></li>
+<li><p>Pemisahan Fitur &amp; Target: Memisahkan kolom fitur (prediktor) dari kolom target (class_label).</p></li>
+<li><p>Penyeimbangan Kelas/Data Balancing (SMOTE): Mengatasi masalah kelas tidak seimbang dengan membuat sampel sintetis untuk kelas minoritas.</p></li>
+</ol>
+<p>untuk script python terlampir dibawa ini :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.naive_bayes</span><span class="w"> </span><span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">imblearn.over_sampling</span><span class="w"> </span><span class="kn">import</span> <span class="n">SMOTE</span>
+
+<span class="c1"># === 1. Load dataset dari KNIME dan buat salinannya ===</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">input_table_1</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># === 2. Cek dan tangani missing values ===</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah missing values sebelum penanganan:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah missing values sesudah penanganan:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># === 3. Deteksi dan hapus outlier menggunakan metode IQR ===</span>
+<span class="n">numerical_cols</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">Q1</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">Q3</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">IQR</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">-</span> <span class="n">Q1</span>
+
+<span class="n">batas_bawah</span> <span class="o">=</span> <span class="n">Q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+<span class="n">batas_atas</span> <span class="o">=</span> <span class="n">Q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">IQR</span>
+
+<span class="n">is_outlier</span> <span class="o">=</span> <span class="p">((</span><span class="n">dataset</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">batas_bawah</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">numerical_cols</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">batas_atas</span><span class="p">))</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">outliers_detected</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">is_outlier</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah outlier yang terdeteksi: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers_detected</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">dataset_no_outlier</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="o">~</span><span class="n">is_outlier</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data sebelum hapus outlier: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data sesudah hapus outlier: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset_no_outlier</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># === 4. Pisahkan fitur (X) dan target (y) ===</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s1">&#39;class_label&#39;</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset_no_outlier</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="n">target_col</span><span class="p">,</span> <span class="s1">&#39;id_protein&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset_no_outlier</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span>
+
+<span class="c1"># === 5. Balancing dataset menggunakan SMOTE ===</span>
+<span class="c1"># Cek jika ada kelas dengan sampel &lt; 2, yang membuat SMOTE gagal</span>
+<span class="n">min_class_count</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">min_class_count</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">SMOTE dilewati karena ada kelas dengan sampel &lt; 2.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">smote</span> <span class="o">=</span> <span class="n">SMOTE</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">k_neighbors</span><span class="o">=</span><span class="n">min_class_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span> <span class="o">=</span> <span class="n">smote</span><span class="o">.</span><span class="n">fit_resample</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jumlah data sebelum SMOTE: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data sesudah SMOTE: </span><span class="si">{</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># === 6. Split data (train dan test) ===</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_res</span><span class="p">,</span> <span class="n">y_res</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># === 7. Standarisasi fitur ===</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># === 8. Naive Bayes (GaussianNB) ===</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># === 9. Prediksi ===</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># === 10. Hasil prediksi ===</span>
+<span class="n">hasil</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Actual&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span>
+    <span class="s1">&#39;Predicted&#39;</span><span class="p">:</span> <span class="n">y_pred</span>
+<span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Contoh hasil prediksi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hasil</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># === 11. Visualisasi distribusi kelas setelah SMOTE ===</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">y_res</span><span class="p">)</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas Setelah SMOTE&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Kelas&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Data&quot;</span><span class="p">)</span>
+
+<span class="c1"># === 12. Output ke KNIME ===</span>
+<span class="n">X_test_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="n">output_table_1</span> <span class="o">=</span> <span class="n">hasil</span>                   
+<span class="n">output_table_2</span> <span class="o">=</span> <span class="n">dataset_no_outlier</span>     
+<span class="n">output_table_3</span> <span class="o">=</span> <span class="n">outliers_detected</span>       
+<span class="n">output_image_1</span> <span class="o">=</span> <span class="n">fig</span>       
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analisis-hasil-dan-output">
+<h2>3. Analisis Hasil dan Output<a class="headerlink" href="#analisis-hasil-dan-output" title="Link to this heading">#</a></h2>
+<section id="output-dari-script-python">
+<h3>3.1 Output dari Script Python.<a class="headerlink" href="#output-dari-script-python" title="Link to this heading">#</a></h3>
+<p>Node Python Script dikonfigurasi untuk menghasilkan beberapa output:</p>
+<ul class="simple">
+<li><p>Tabel Hasil Prediksi: Tabel perbandingan antara kelas aktual (Actual) dan kelas yang diprediksi (Predicted).</p></li>
+<li><p>Tabel Data Bersih: Dataset setelah outlier dihilangkan.</p></li>
+<li><p>Tabel Outlier: Daftar baris data yang terdeteksi sebagai outlier.</p></li>
+</ul>
+<p>OUTPUT :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Jumlah</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">sebelum</span> <span class="n">penanganan</span><span class="p">:</span>
+
+<span class="n">id_protein</span>     <span class="mi">0</span>
+<span class="n">feature1</span>       <span class="mi">0</span>
+<span class="n">feature2</span>       <span class="mi">0</span>
+<span class="n">feature3</span>       <span class="mi">0</span>
+<span class="n">feature4</span>       <span class="mi">0</span>
+<span class="n">feature5</span>       <span class="mi">0</span>
+<span class="n">feature6</span>       <span class="mi">0</span>
+<span class="n">feature7</span>       <span class="mi">0</span>
+<span class="n">class_label</span>    <span class="mi">0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+<span class="n">Jumlah</span> <span class="n">missing</span> <span class="n">values</span> <span class="n">sesudah</span> <span class="n">penanganan</span><span class="p">:</span>
+<span class="n">id_protein</span>     <span class="mi">0</span>
+<span class="n">feature1</span>       <span class="mi">0</span>
+<span class="n">feature2</span>       <span class="mi">0</span>
+<span class="n">feature3</span>       <span class="mi">0</span>
+<span class="n">feature4</span>       <span class="mi">0</span>
+<span class="n">feature5</span>       <span class="mi">0</span>
+<span class="n">feature6</span>       <span class="mi">0</span>
+<span class="n">feature7</span>       <span class="mi">0</span>
+<span class="n">class_label</span>    <span class="mi">0</span>
+<span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+<span class="n">Jumlah</span> <span class="n">outlier</span> <span class="n">yang</span> <span class="n">terdeteksi</span><span class="p">:</span> <span class="mi">0</span>
+<span class="n">Jumlah</span> <span class="n">data</span> <span class="n">sebelum</span> <span class="n">hapus</span> <span class="n">outlier</span><span class="p">:</span> <span class="mi">336</span>
+<span class="n">Jumlah</span> <span class="n">data</span> <span class="n">sesudah</span> <span class="n">hapus</span> <span class="n">outlier</span><span class="p">:</span> <span class="mi">336</span>
+<span class="n">Jumlah</span> <span class="n">data</span> <span class="n">sebelum</span> <span class="n">SMOTE</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cp&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;im&#39;</span><span class="p">:</span> <span class="mi">77</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">:</span> <span class="mi">52</span><span class="p">,</span> <span class="s1">&#39;imU&#39;</span><span class="p">:</span> <span class="mi">35</span><span class="p">,</span> <span class="s1">&#39;om&#39;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="s1">&#39;omL&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;imS&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;imL&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+<span class="n">Jumlah</span> <span class="n">data</span> <span class="n">sesudah</span> <span class="n">SMOTE</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;cp&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;im&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;imS&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;imL&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;imU&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;om&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;omL&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">,</span> <span class="s1">&#39;pp&#39;</span><span class="p">:</span> <span class="mi">143</span><span class="p">}</span>
+<span class="n">Contoh</span> <span class="n">hasil</span> <span class="n">prediksi</span><span class="p">:</span>
+  <span class="n">Actual</span> <span class="n">Predicted</span>
+<span class="mi">0</span>     <span class="n">im</span>        <span class="n">pp</span>
+<span class="mi">1</span>     <span class="n">om</span>        <span class="n">pp</span>
+<span class="mi">2</span>    <span class="n">imL</span>       <span class="n">imL</span>
+<span class="mi">3</span>    <span class="n">imS</span>       <span class="n">imS</span>
+<span class="mi">4</span>     <span class="n">pp</span>        <span class="n">pp</span>
+
+<span class="n">Dari</span> <span class="n">hasil</span> <span class="n">yang</span> <span class="n">didapat</span><span class="p">,</span> <span class="n">terlihat</span> <span class="n">bahwa</span> <span class="n">teknik</span> <span class="n">SMOTE</span> <span class="n">berhasil</span> <span class="n">menyeimbangkan</span> <span class="n">distribusi</span> <span class="n">kelas</span><span class="p">,</span> <span class="n">yang</span> <span class="n">merupakan</span> <span class="n">langkah</span> <span class="n">penting</span> <span class="n">untuk</span> <span class="n">mencegah</span> <span class="n">bias</span> <span class="n">pada</span> <span class="n">model</span> <span class="n">machine</span> <span class="n">learning</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PCA-LDA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PCA-LDA DATASET ECOLI</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-data-e-coli-menggunakan-knime-postgresql-dan-python-untuk-prediksi-klasifikasi-protein">Analisis Data E. coli Menggunakan KNIME, PostgreSQL, dan Python untuk Prediksi Klasifikasi Protein</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oleh-hajjid-rafi-mumtaz">Oleh : Hajjid Rafi Mumtaz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instalasi-teknologi-yang-diperlukan">1. Instalasi teknologi yang diperlukan.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-dan-mengkonfigurasi-environment-conda">1.1 Membuat dan Mengkonfigurasi Environment Conda</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengintegrasikan-python-dengan-knime">1.2 Mengintegrasikan Python dengan KNIME</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membangun-alur-kerja-workflow-di-knime">2. Membangun Alur Kerja (Workflow) di KNIME</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#koneksi-ke-database-postgresql">2.1 Koneksi ke Database PostgreSQL.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksekusi-script-python-untuk-pemrosesan-data">2.2. Eksekusi Script Python untuk Pemrosesan Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil-dan-output">3. Analisis Hasil dan Output</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-dari-script-python">3.1 Output dari Script Python.</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
