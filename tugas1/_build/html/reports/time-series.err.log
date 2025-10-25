@@ -31,8 +31,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# Import library', 'import pandas as pd', 'import matplotlib.pyplot as plt', 'import seaborn as sns', 'from sklearn.datasets import load_iris']
+['import json # Tambahkan ini', 'import numpy as np # Tambahkan ini', 'import pandas as pd # Pastikan pandas sudah ada', '', '# Tentukan reducer-nya']
 ...
-["df['species'] = IRIS.target + 1", "df['species_name'] = df['species'].map({1:'setosa', 2:'versicolor', 3:'virginica'})", '', '# Tambahkan nomor baris mulai dari 1', "df.insert(0, 'No', range(1, len(df)+1))"]
+['print("Selesai! File JSON telah di-load dan diubah ke DataFrame.")', 'print("\\nData \'before\' (2019):")', 'print(before_df.head())', 'print("\\nData \'after\' (2021):")', 'print(after_df.head())']
 -------------------
 

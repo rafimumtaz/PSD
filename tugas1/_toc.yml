@@ -11,3 +11,4 @@ chapters:
 - file: Data-Preprocessing
 - file: PCA-LDA
 - file: tugas-prauts
+- file: time-series
