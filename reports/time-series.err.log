@@ -31,7 +31,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['import json # Tambahkan ini', 'import numpy as np # Tambahkan ini', 'import pandas as pd # Pastikan pandas sudah ada', '', '# Tentukan reducer-nya']
+['reducer = "mean"', '', '# Gunakan aggregate_spatial untuk menghitung rata-rata di dalam AOI', 'no2_before_mean = no2_before.aggregate_spatial(geometries=aoi, reducer=reducer)', 'no2_after_mean = no2_after.aggregate_spatial(geometries=aoi, reducer=reducer)']
 ...
 ['print("Selesai! File JSON telah di-load dan diubah ke DataFrame.")', 'print("\\nData \'before\' (2019):")', 'print(before_df.head())', 'print("\\nData \'after\' (2021):")', 'print(after_df.head())']
 -------------------
