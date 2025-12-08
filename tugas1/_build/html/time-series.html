@@ -60,6 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'time-series';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)" href="uas-CatsDogs.html" />
     <link rel="prev" title="Tugas pra-UTS PSD" href="tugas-prauts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +189,7 @@
 <li class="toctree-l1"><a class="reference internal" href="PCA-LDA.html">PCA-LDA DATASET ECOLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas-prauts.html">Tugas pra-UTS PSD</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Sentinel-5P NO2 Analysis - Copernicus Data Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uas-CatsDogs.html">Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)</a></li>
 </ul>
 
     </div>
@@ -432,7 +434,47 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using refresh token.
+<div class="output text_html">Visit <a href="https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=DEIP-OVXJ" title="Authenticate at https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=DEIP-OVXJ" target="_blank" rel="noopener noreferrer">https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=DEIP-OVXJ</a> <a href="#" onclick="navigator.clipboard.writeText('https://identity.dataspace.copernicus.eu/auth/realms/CDSE/device?user_code=DEIP-OVXJ');return false;" title="Copy authentication URL to clipboard">&#128203;</a> to authenticate.</div><div class="output text_html"><code>[###################################--]</code> ⌛ Authorization pending</div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;https://openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+
+<span class="nn">File C:\xampp\htdocs\PSDs\.venv\Lib\site-packages\openeo\rest\connection.py:621,</span> in <span class="ni">Connection.authenticate_oidc</span><span class="nt">(self, provider_id, client_id, client_secret, store_refresh_token, use_pkce, display, max_poll_time)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Trying device code flow.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">618</span> <span class="n">authenticator</span> <span class="o">=</span> <span class="n">OidcDeviceAuthenticator</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="n">client_info</span><span class="o">=</span><span class="n">client_info</span><span class="p">,</span> <span class="n">use_pkce</span><span class="o">=</span><span class="n">use_pkce</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="n">display</span><span class="p">,</span> <span class="n">max_poll_time</span><span class="o">=</span><span class="n">max_poll_time</span>
+<span class="g g-Whitespace">    </span><span class="mi">620</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">621</span> <span class="n">con</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_authenticate_oidc</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span>     <span class="n">authenticator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="n">provider_id</span><span class="o">=</span><span class="n">provider_id</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">624</span>     <span class="n">store_refresh_token</span><span class="o">=</span><span class="n">store_refresh_token</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">626</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Authenticated using device code flow.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="k">return</span> <span class="n">con</span>
+
+<span class="nn">File C:\xampp\htdocs\PSDs\.venv\Lib\site-packages\openeo\rest\connection.py:351,</span> in <span class="ni">Connection._authenticate_oidc</span><span class="nt">(self, authenticator, provider_id, store_refresh_token, fallback_refresh_token_to_store, oidc_auth_renewer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">339</span> <span class="k">def</span><span class="w"> </span><span class="nf">_authenticate_oidc</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="n">authenticator</span><span class="p">:</span> <span class="n">OidcAuthenticator</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>    <span class="mi">346</span>     <span class="n">oidc_auth_renewer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">OidcAuthenticator</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Connection</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">348</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">349</span><span class="sd">     Authenticate through OIDC and set up bearer token (based on OIDC access_token) for further requests.</span>
+<span class="g g-Whitespace">    </span><span class="mi">350</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">351</span>     <span class="n">tokens</span> <span class="o">=</span> <span class="n">authenticator</span><span class="o">.</span><span class="n">get_tokens</span><span class="p">(</span><span class="n">request_refresh_token</span><span class="o">=</span><span class="n">store_refresh_token</span><span class="p">)</span>
+<span class="nn">    352     _log.info(&quot;Obtained tokens: {t}&quot;.format(t=[k for k, v</span> in <span class="ni">tokens._asdict().items</span><span class="nt">() if v]))</span>
+<span class="g g-Whitespace">    </span><span class="mi">353</span>     <span class="k">if</span> <span class="n">store_refresh_token</span><span class="p">:</span>
+
+<span class="nn">File C:\xampp\htdocs\PSDs\.venv\Lib\site-packages\openeo\rest\auth\oidc.py:914,</span> in <span class="ni">OidcDeviceAuthenticator.get_tokens</span><span class="nt">(self, request_refresh_token)</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span> <span class="k">while</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_max_poll_time</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="n">poll_ui</span><span class="o">.</span><span class="n">show_progress</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">914</span>     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span>     <span class="k">if</span> <span class="n">elapsed</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">next_poll</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">917</span>         <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">918</span>             <span class="sa">f</span><span class="s2">&quot;Doing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">grant_type</span><span class="si">!r}</span><span class="s2"> token request </span><span class="si">{</span><span class="n">token_endpoint</span><span class="si">!r}</span><span class="s2"> with post data fields </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">post_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">!r}</span><span class="s2"> (client_id </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="si">!r}</span><span class="s2">)&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">919</span>         <span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -541,18 +583,59 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memulai job untuk data 2019 (before)...
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2510270339444a9baedd5288c4c64d9b&#39;: send &#39;start&#39;
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:14 Job &#39;j-2510270339444a9baedd5288c4c64d9b&#39;: created (progress 0%)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:20 Job &#39;j-2510270339444a9baedd5288c4c64d9b&#39;: created (progress 0%)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:28 Job &#39;j-2510270339444a9baedd5288c4c64d9b&#39;: running (progress N/A)
+0:00:00 Job &#39;j-25102703103846df838d8aec51e63712&#39;: send &#39;start&#39;
+0:00:14 Job &#39;j-25102703103846df838d8aec51e63712&#39;: created (progress 0%)
+0:00:19 Job &#39;j-25102703103846df838d8aec51e63712&#39;: created (progress 0%)
+0:00:26 Job &#39;j-25102703103846df838d8aec51e63712&#39;: created (progress 0%)
+0:00:34 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:00:45 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:00:58 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:01:13 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:01:33 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:01:58 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:02:28 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:03:06 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:03:54 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:04:52 Job &#39;j-25102703103846df838d8aec51e63712&#39;: running (progress N/A)
+0:05:53 Job &#39;j-25102703103846df838d8aec51e63712&#39;: finished (progress 100%)
+Memulai job untuk data 2021 (after)...
+0:00:00 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: send &#39;start&#39;
+0:00:14 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: created (progress 0%)
+0:00:19 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: created (progress 0%)
+0:00:26 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: created (progress 0%)
+0:00:35 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: created (progress 0%)
+0:00:45 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: created (progress 0%)
+0:00:58 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:01:14 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:01:33 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:01:58 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:02:28 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:03:06 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:03:54 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:04:53 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:05:54 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: running (progress N/A)
+0:06:54 Job &#39;j-25102703163348eeb85bb88032f0ee0d&#39;: finished (progress 100%)
+Mengunduh hasil 2019 ke no2_before_covid.json...
+Mengunduh hasil 2021 ke no2_after_covid.json...
+Membaca file JSON: no2_before_covid.json
+Membaca file JSON: no2_after_covid.json
+Selesai! File JSON telah di-load dan diubah ke DataFrame.
+
+Data &#39;before&#39; (2019):
+                       date     value
+0 2019-01-01 00:00:00+00:00       NaN
+1 2019-01-02 00:00:00+00:00       NaN
+2 2019-01-03 00:00:00+00:00  0.000043
+3 2019-01-04 00:00:00+00:00  0.000051
+4 2019-01-05 00:00:00+00:00  0.000096
+
+Data &#39;after&#39; (2021):
+                       date     value
+0 2021-01-01 00:00:00+00:00       NaN
+1 2021-01-02 00:00:00+00:00  0.000066
+2 2021-01-03 00:00:00+00:00       NaN
+3 2021-01-04 00:00:00+00:00       NaN
+4 2021-01-05 00:00:00+00:00       NaN
 </pre></div>
 </div>
 </div>
@@ -947,6 +1030,15 @@ Forecast 5 hari selesai.
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Tugas pra-UTS PSD</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="uas-CatsDogs.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
