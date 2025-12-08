@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Content with notebooks &#8212; My sample book</title>
+    <title>Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing) &#8212; My sample book</title>
   
   
   
@@ -57,11 +57,10 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'uas-CatsDogs';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Sentinel-5P NO2 Analysis - Copernicus Data Space" href="time-series.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -124,8 +123,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -181,7 +178,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Business-Understanding.html">Business Understanding: Iris Flower Classification</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="Data-Understanding.html">Data Understanding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="Data-Exploration.html">Data Exploration</a></li>
@@ -191,7 +188,7 @@
 <li class="toctree-l1"><a class="reference internal" href="PCA-LDA.html">PCA-LDA DATASET ECOLI</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tugas-prauts.html">Tugas pra-UTS PSD</a></li>
 <li class="toctree-l1"><a class="reference internal" href="time-series.html">Sentinel-5P NO2 Analysis - Copernicus Data Space</a></li>
-<li class="toctree-l1"><a class="reference internal" href="uas-CatsDogs.html">Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)</a></li>
 </ul>
 
     </div>
@@ -263,7 +260,7 @@
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fuas-CatsDogs.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -293,7 +290,7 @@
       
       
       
-      <li><a href="_sources/notebooks.ipynb" target="_blank"
+      <li><a href="_sources/uas-CatsDogs.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +374,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Content with notebooks</h1>
+    <h1>Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -387,9 +384,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-notebooks">Markdown + notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myst-markdown">MyST markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-blocks-and-outputs">Code blocks and outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding-memahami-bisnis">1. Business Understanding (Memahami Bisnis)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-masalah">1.1 Latar Belakang Masalah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-proyek-project-objectives">1.2 Tujuan Proyek (Project Objectives)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">1.3 Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-memahami-data-eda">2. Data Understanding (Memahami Data / EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data">2.1 Pengumpulan Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">2.2 Deskripsi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-eda">2.3 Eksplorasi Data (EDA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">3. Preprocessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-loading">3.1 Data Cleaning &amp; Loading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling">3.2 Resampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-duration-padding-truncating">3.3 Fixing Duration (Padding &amp; Truncating)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-ekstraksi-fitur">3.4 Feature Extraction (Ekstraksi Fitur)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-encoding">3.5 Label Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">3.6 Train-Test Split</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -401,83 +416,138 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="content-with-notebooks">
-<h1>Content with notebooks<a class="headerlink" href="#content-with-notebooks" title="Link to this heading">#</a></h1>
-<p>You can also create content with Jupyter Notebooks. This means that you can include
-code blocks and their outputs in your book.</p>
-<section id="markdown-notebooks">
-<h2>Markdown + notebooks<a class="headerlink" href="#markdown-notebooks" title="Link to this heading">#</a></h2>
-<p>As it is markdown, you can embed images, HTML, etc into your posts!</p>
-<p><img alt="" src="https://myst-parser.readthedocs.io/en/latest/_static/logo-wide.svg" /></p>
-<p>You can also <span class="math notranslate nohighlight">\(add_{math}\)</span> and</p>
-<div class="math notranslate nohighlight">
-\[
-math^{blocks}
-\]</div>
-<p>or</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{aligned}
-\mbox{mean} la_{tex} \\ \\
-math blocks
-\end{aligned}
-\end{split}\]</div>
-<p>But make sure you $Escape $your $dollar signs $you want to keep!</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="laporan-proyek-uas-klasifikasi-time-series-audio-anjing-vs-kucing">
+<h1>Laporan Proyek UAS: Klasifikasi Time Series Audio (Anjing vs Kucing)<a class="headerlink" href="#laporan-proyek-uas-klasifikasi-time-series-audio-anjing-vs-kucing" title="Link to this heading">#</a></h1>
+<p><strong>Nama:</strong> Hajjid Rafi Mumtaz<br />
+<strong>NIM:</strong> 230411100078<br />
+<strong>Dataset Source:</strong> <a class="reference external" href="https://www.kaggle.com/datasets/mmoreaux/audio-cats-and-dogs">Kaggle - Audio Cats and Dogs</a></p>
+<hr class="docutils" />
+<section id="business-understanding-memahami-bisnis">
+<h2>1. Business Understanding (Memahami Bisnis)<a class="headerlink" href="#business-understanding-memahami-bisnis" title="Link to this heading">#</a></h2>
+<p>Tahap ini berfokus pada pemahaman tujuan proyek dan kebutuhan analisis dari sudut pandang pemecahan masalah.</p>
+<section id="latar-belakang-masalah">
+<h3>1.1 Latar Belakang Masalah<a class="headerlink" href="#latar-belakang-masalah" title="Link to this heading">#</a></h3>
+<p>Data audio merupakan salah satu bentuk data <em>time series</em> (deret waktu) di mana sinyal suara berubah seiring berjalannya waktu (amplitudo vs waktu). Dalam konteks pemrosesan sinyal digital, membedakan jenis suara hewan secara otomatis memiliki tantangan tersendiri karena variasi frekuensi, durasi, dan <em>noise</em> latar belakang.</p>
 </section>
-<section id="myst-markdown">
-<h2>MyST markdown<a class="headerlink" href="#myst-markdown" title="Link to this heading">#</a></h2>
-<p>MyST markdown works in Jupyter Notebooks as well. For more information about MyST markdown, check
-out <a class="reference external" href="https://jupyterbook.org/content/myst.html">the MyST guide in Jupyter Book</a>,
-or see <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">the MyST markdown documentation</a>.</p>
+<section id="tujuan-proyek-project-objectives">
+<h3>1.2 Tujuan Proyek (Project Objectives)<a class="headerlink" href="#tujuan-proyek-project-objectives" title="Link to this heading">#</a></h3>
+<p>Tujuan utama dari proyek ini adalah membangun model <em>Machine Learning</em> (atau <em>Deep Learning</em>) yang mampu melakukan klasifikasi biner pada data <em>time series</em> audio untuk:</p>
+<ol class="arabic simple">
+<li><p><strong>Mendeteksi Pola Suara:</strong> Mempelajari fitur karakteristik dari gelombang suara anjing (gonggongan) dan kucing (meong).</p></li>
+<li><p><strong>Otomasi Klasifikasi:</strong> Mengklasifikasikan file audio baru secara akurat ke dalam label “Dog” atau “Cat”.</p></li>
+</ol>
 </section>
-<section id="code-blocks-and-outputs">
-<h2>Code blocks and outputs<a class="headerlink" href="#code-blocks-and-outputs" title="Link to this heading">#</a></h2>
-<p>Jupyter Book will also embed your code blocks and output in your book.
-For example, here’s some sample Matplotlib code:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">rcParams</span><span class="p">,</span> <span class="n">cycler</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;contextlib.ExitStack at 0x28b8ebb00d0&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixing random state for reproducibility</span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">19680801</span><span class="p">)</span>
-
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">+</span> <span class="n">ii</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
-<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">coolwarm</span>
-<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)))</span>
-
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.lines</span><span class="w"> </span><span class="kn">import</span> <span class="n">Line2D</span>
-<span class="n">custom_lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">0.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">.5</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">Line2D</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">cmap</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)]</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">lines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">custom_lines</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Cold&#39;</span><span class="p">,</span> <span class="s1">&#39;Medium&#39;</span><span class="p">,</span> <span class="s1">&#39;Hot&#39;</span><span class="p">]);</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/b8f01682ca35162d57690b55434b87df85aeb1ac4c4521a68e2860bc7696320e.png" src="_images/b8f01682ca35162d57690b55434b87df85aeb1ac4c4521a68e2860bc7696320e.png" />
-</div>
-</div>
-<p>There is a lot more that you can do with outputs (such as including interactive outputs)
-with your book. For more information about this, see <a class="reference external" href="https://jupyterbook.org">the Jupyter Book documentation</a></p>
+<section id="tujuan-analisis">
+<h3>1.3 Tujuan Analisis<a class="headerlink" href="#tujuan-analisis" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Mengekstrak fitur bermakna dari data mentah audio (seperti MFCC atau Spektrogram).</p></li>
+<li><p>Membangun model klasifikasi yang memiliki akurasi, presisi, dan recall yang baik.</p></li>
+<li><p>Menyediakan model yang siap di-<em>deploy</em> ke aplikasi web (Streamlit).</p></li>
+</ul>
+</section>
+</section>
+<section id="data-understanding-memahami-data-eda">
+<h2>2. Data Understanding (Memahami Data / EDA)<a class="headerlink" href="#data-understanding-memahami-data-eda" title="Link to this heading">#</a></h2>
+<p>Tahap ini bertujuan untuk mengumpulkan data, mendeskripsikan data, serta melakukan eksplorasi data (Exploratory Data Analysis/EDA) untuk mengenali karakteristik sinyal audio.</p>
+<section id="pengumpulan-data">
+<h3>2.1 Pengumpulan Data<a class="headerlink" href="#pengumpulan-data" title="Link to this heading">#</a></h3>
+<p>Dataset diambil dari Kaggle dengan judul “Audio Cats and Dogs”. Dataset ini berisi file audio dalam format <code class="docutils literal notranslate"><span class="pre">.wav</span></code>.</p>
+<ul class="simple">
+<li><p><strong>Sumber:</strong> Kaggle (mmoreaux/audio-cats-and-dogs)</p></li>
+<li><p><strong>Struktur Folder:</strong> Terbagi menjadi folder <code class="docutils literal notranslate"><span class="pre">cats_dogs</span></code> yang berisi subfolder label atau file tercampur dengan penamaan khusus.</p></li>
+</ul>
+</section>
+<section id="deskripsi-data">
+<h3>2.2 Deskripsi Data<a class="headerlink" href="#deskripsi-data" title="Link to this heading">#</a></h3>
+<p>Pada tahap ini, dilakukan pemeriksaan properti fisik dari file audio:</p>
+<ul class="simple">
+<li><p><strong>Jumlah Sampel:</strong> Menghitung total file audio untuk kucing dan anjing.</p></li>
+<li><p><strong>Durasi Audio:</strong> Memeriksa rata-rata panjang durasi audio (detik).</p></li>
+<li><p><strong>Sample Rate:</strong> Memeriksa frekuensi pengambilan sampel (misalnya 16kHz atau 44.1kHz).</p></li>
+<li><p><strong>Channel:</strong> Memastikan apakah audio mono atau stereo.</p></li>
+</ul>
+</section>
+<section id="eksplorasi-data-eda">
+<h3>2.3 Eksplorasi Data (EDA)<a class="headerlink" href="#eksplorasi-data-eda" title="Link to this heading">#</a></h3>
+<p>Visualisasi dilakukan untuk memahami perbedaan pola <em>time series</em> antara kedua kelas:</p>
+<ol class="arabic simple">
+<li><p><strong>Visualisasi Waveform (Time Domain):</strong></p>
+<ul class="simple">
+<li><p>Plot Amplitudo vs Waktu.</p></li>
+<li><p><em>Observasi:</em> Melihat bentuk gelombang mentah, apakah suara anjing memiliki amplitudo yang lebih meledak-ledak dibandingkan kucing.</p></li>
+</ul>
+</li>
+<li><p><strong>Visualisasi Spektrogram (Frequency Domain):</strong></p>
+<ul class="simple">
+<li><p>Mengubah sinyal waktu menjadi representasi visual frekuensi.</p></li>
+<li><p><em>Observasi:</em> Melihat intensitas frekuensi pada waktu tertentu. Gonggongan anjing biasanya memiliki frekuensi rendah yang kuat, sedangkan kucing mungkin memiliki harmonik di frekuensi lebih tinggi.</p></li>
+</ul>
+</li>
+<li><p><strong>Analisis Keseimbangan Kelas (Class Balance):</strong></p>
+<ul class="simple">
+<li><p>Memastikan jumlah data <em>Cat</em> dan <em>Dog</em> seimbang agar model tidak bias.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="preprocessing-data">
+<h2>3. Preprocessing Data<a class="headerlink" href="#preprocessing-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini adalah proses mengubah data audio mentah menjadi format yang dapat dipahami oleh algoritma <em>machine learning</em>. Karena ini adalah data <em>time series</em>, fitur temporal sangat penting.</p>
+<section id="data-cleaning-loading">
+<h3>3.1 Data Cleaning &amp; Loading<a class="headerlink" href="#data-cleaning-loading" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Menggunakan <em>library</em> <code class="docutils literal notranslate"><span class="pre">librosa</span></code> untuk memuat file audio.</p></li>
+<li><p>Menghapus file yang korup atau memiliki durasi terlalu pendek (misal &lt; 1 detik) yang tidak mengandung informasi cukup.</p></li>
+</ul>
+</section>
+<section id="resampling">
+<h3>3.2 Resampling<a class="headerlink" href="#resampling" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Menyamakan <em>sample rate</em> seluruh file audio (misalnya diseragamkan menjadi 22.050 Hz) untuk menjaga konsistensi dimensi data.</p></li>
+</ul>
+</section>
+<section id="fixing-duration-padding-truncating">
+<h3>3.3 Fixing Duration (Padding &amp; Truncating)<a class="headerlink" href="#fixing-duration-padding-truncating" title="Link to this heading">#</a></h3>
+<p>Model klasifikasi (terutama Neural Network seperti CNN atau LSTM) membutuhkan input dengan dimensi yang tetap (fixed shape).</p>
+<ul class="simple">
+<li><p><strong>Truncating:</strong> Jika audio lebih panjang dari durasi target (misal 5 detik), audio akan dipotong.</p></li>
+<li><p><strong>Padding:</strong> Jika audio lebih pendek dari target, akan ditambahkan nilai nol (<em>zero padding</em>) hingga mencapai panjang yang ditentukan.</p></li>
+</ul>
+</section>
+<section id="feature-extraction-ekstraksi-fitur">
+<h3>3.4 Feature Extraction (Ekstraksi Fitur)<a class="headerlink" href="#feature-extraction-ekstraksi-fitur" title="Link to this heading">#</a></h3>
+<p>Mengubah data <em>time series</em> mentah menjadi fitur numerik yang lebih padat informasi. Metode yang digunakan:</p>
+<ul class="simple">
+<li><p><strong>Mel-Frequency Cepstral Coefficients (MFCCs):</strong> Teknik ini sangat populer dalam pengolahan suara karena merepresentasikan amplop spektral pendek dari gelombang suara yang menyerupai cara telinga manusia mendengar.</p>
+<ul>
+<li><p><em>Output:</em> Matriks 2D (koefisien MFCC x waktu).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="label-encoding">
+<h3>3.5 Label Encoding<a class="headerlink" href="#label-encoding" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Mengubah label kategori menjadi numerik:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Cat</span></code> -&gt; 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Dog</span></code> -&gt; 1</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="train-test-split">
+<h3>3.6 Train-Test Split<a class="headerlink" href="#train-test-split" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Membagi dataset menjadi:</p>
+<ul>
+<li><p><strong>Training Set (80%):</strong> Untuk melatih model.</p></li>
+<li><p><strong>Test Set (20%):</strong> Untuk evaluasi performa model.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 </section>
 
@@ -511,6 +581,15 @@ with your book. For more information about this, see <a class="reference externa
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="time-series.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sentinel-5P NO2 Analysis - Copernicus Data Space</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -527,9 +606,27 @@ with your book. For more information about this, see <a class="reference externa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-notebooks">Markdown + notebooks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myst-markdown">MyST markdown</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-blocks-and-outputs">Code blocks and outputs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding-memahami-bisnis">1. Business Understanding (Memahami Bisnis)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-masalah">1.1 Latar Belakang Masalah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-proyek-project-objectives">1.2 Tujuan Proyek (Project Objectives)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">1.3 Tujuan Analisis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-memahami-data-eda">2. Data Understanding (Memahami Data / EDA)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengumpulan-data">2.1 Pengumpulan Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-data">2.2 Deskripsi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-data-eda">2.3 Eksplorasi Data (EDA)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data">3. Preprocessing Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning-loading">3.1 Data Cleaning &amp; Loading</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resampling">3.2 Resampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixing-duration-padding-truncating">3.3 Fixing Duration (Padding &amp; Truncating)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-ekstraksi-fitur">3.4 Feature Extraction (Ekstraksi Fitur)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-encoding">3.5 Label Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">3.6 Train-Test Split</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

@@ -31,6 +31,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-conn = openeo.connect("https://openeo.dataspace.copernicus.eu").authenticate_oidc()
+['# Import library', 'import pandas as pd', 'import matplotlib.pyplot as plt', 'import seaborn as sns', 'from sklearn.datasets import load_iris']
+...
+["df['species'] = IRIS.target + 1", "df['species_name'] = df['species'].map({1:'setosa', 2:'versicolor', 3:'virginica'})", '', '# Tambahkan nomor baris mulai dari 1', "df.insert(0, 'No', range(1, len(df)+1))"]
 -------------------
 

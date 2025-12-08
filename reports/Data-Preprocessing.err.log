@@ -31,6 +31,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-conn = openeo.connect("https://openeo.dataspace.copernicus.eu").authenticate_oidc()
+['import pandas as pd', 'import numpy as np', 'import matplotlib.pyplot as plt', 'import seaborn as sns', 'from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler']
+...
+['print("Libraries yang tersedia:")', 'print("   • Pandas & NumPy: Data manipulation")', 'print("   • Matplotlib & Seaborn: Visualisasi")', 'print("   • Scikit-learn: Preprocessing tools")', 'print("   • PyCaret: Advanced ML preprocessing")']
 -------------------
 
