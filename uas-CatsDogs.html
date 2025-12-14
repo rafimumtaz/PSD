@@ -405,6 +405,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">3.6 Train-Test Split</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-pemodelan-data">4. Modeling (Pemodelan Data)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-algoritma">4.1 Pemilihan Algoritma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desain-arsitektur-model">4.2 Desain Arsitektur Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-pelatihan-training">4.3 Konfigurasi Pelatihan (Training)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-evaluasi">5. Evaluation (Evaluasi)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">5.1 Metrik Evaluasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil">5.2 Analisis Hasil</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">6. Deployment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rencana-deployment">6.1 Rencana Deployment</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -549,6 +564,71 @@ document.write(`
 </ul>
 </section>
 </section>
+<section id="modeling-pemodelan-data">
+<h2>4. Modeling (Pemodelan Data)<a class="headerlink" href="#modeling-pemodelan-data" title="Link to this heading">#</a></h2>
+<p>Tahap ini adalah inti dari proses <em>machine learning</em> di mana algoritma diaplikasikan untuk mempelajari pola dari fitur audio yang telah diekstraksi.</p>
+<section id="pemilihan-algoritma">
+<h3>4.1 Pemilihan Algoritma<a class="headerlink" href="#pemilihan-algoritma" title="Link to this heading">#</a></h3>
+<p>Mengingat data berupa <em>time series</em> audio yang telah diekstraksi fiturnya (MFCC), model yang dipilih adalah <strong>Artificial Neural Network (ANN)</strong> atau <strong>Convolutional Neural Network (1D-CNN)</strong>.</p>
+<ul class="simple">
+<li><p><strong>Alasan:</strong> Neural Network sangat baik dalam menangkap pola non-linear yang kompleks pada data spektrogram/MFCC audio dibandingkan algoritma klasik.</p></li>
+</ul>
+</section>
+<section id="desain-arsitektur-model">
+<h3>4.2 Desain Arsitektur Model<a class="headerlink" href="#desain-arsitektur-model" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Input Layer:</strong> Menerima array fitur (jumlah koefisien MFCC).</p></li>
+<li><p><strong>Hidden Layers:</strong> Menggunakan lapisan <em>Dense</em> (Fully Connected) dengan fungsi aktivasi <strong>ReLU</strong> untuk mempelajari representasi fitur.</p></li>
+<li><p><strong>Output Layer:</strong> Satu neuron dengan fungsi aktivasi <strong>Sigmoid</strong> (karena ini klasifikasi biner: 0 atau 1 / Kucing atau Anjing).</p></li>
+</ul>
+</section>
+<section id="konfigurasi-pelatihan-training">
+<h3>4.3 Konfigurasi Pelatihan (Training)<a class="headerlink" href="#konfigurasi-pelatihan-training" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Loss Function:</strong> <code class="docutils literal notranslate"><span class="pre">Binary</span> <span class="pre">Crossentropy</span></code> (standar untuk klasifikasi biner).</p></li>
+<li><p><strong>Optimizer:</strong> <code class="docutils literal notranslate"><span class="pre">Adam</span></code> (adaptif dan efisien).</p></li>
+<li><p><strong>Metric:</strong> <code class="docutils literal notranslate"><span class="pre">Accuracy</span></code>.</p></li>
+<li><p><strong>Epochs:</strong> Jumlah iterasi pelatihan (misal: 50-100 epoch).</p></li>
+</ul>
+</section>
+</section>
+<section id="evaluation-evaluasi">
+<h2>5. Evaluation (Evaluasi)<a class="headerlink" href="#evaluation-evaluasi" title="Link to this heading">#</a></h2>
+<p>Setelah model dilatih, performanya harus divalidasi menggunakan data uji (<em>Test Set</em>) yang tidak pernah dilihat model sebelumnya.</p>
+<section id="metrik-evaluasi">
+<h3>5.1 Metrik Evaluasi<a class="headerlink" href="#metrik-evaluasi" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Akurasi (Accuracy):</strong> Seberapa sering model menebak dengan benar secara keseluruhan.</p></li>
+<li><p><strong>Confusion Matrix:</strong> Melihat detail kesalahan prediksi (berapa banyak suara kucing diprediksi sebagai anjing, dan sebaliknya).</p></li>
+<li><p><strong>Classification Report:</strong> Menampilkan <em>Precision</em>, <em>Recall</em>, dan <em>F1-Score</em>.</p></li>
+</ul>
+</section>
+<section id="analisis-hasil">
+<h3>5.2 Analisis Hasil<a class="headerlink" href="#analisis-hasil" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Apakah model mengalami <em>Overfitting</em> (bagus di training, buruk di testing)?</p></li>
+<li><p>Apakah model bias ke salah satu kelas (misal: jago menebak anjing tapi gagal menebak kucing)?</p></li>
+</ul>
+</section>
+</section>
+<section id="deployment">
+<h2>6. Deployment<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
+<p>Tahap terakhir adalah membuat model dapat digunakan oleh pengguna akhir melalui antarmuka grafis.</p>
+<section id="rencana-deployment">
+<h3>6.1 Rencana Deployment<a class="headerlink" href="#rencana-deployment" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Platform:</strong> Streamlit (Framework Python untuk Web Apps Data Science).</p></li>
+<li><p><strong>Fitur:</strong></p>
+<ul>
+<li><p>Upload file audio (<code class="docutils literal notranslate"><span class="pre">.wav</span></code>).</p></li>
+<li><p>Visualisasi audio (Audio player &amp; Waveform).</p></li>
+<li><p>Tombol “Prediksi”.</p></li>
+<li><p>Output hasil klasifikasi (Kucing/Anjing) beserta tingkat keyakinan (confidence score).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -625,6 +705,21 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-extraction-ekstraksi-fitur">3.4 Feature Extraction (Ekstraksi Fitur)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#label-encoding">3.5 Label Encoding</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split">3.6 Train-Test Split</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-pemodelan-data">4. Modeling (Pemodelan Data)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-algoritma">4.1 Pemilihan Algoritma</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desain-arsitektur-model">4.2 Desain Arsitektur Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-pelatihan-training">4.3 Konfigurasi Pelatihan (Training)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-evaluasi">5. Evaluation (Evaluasi)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">5.1 Metrik Evaluasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil">5.2 Analisis Hasil</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">6. Deployment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rencana-deployment">6.1 Rencana Deployment</a></li>
 </ul>
 </li>
 </ul>
