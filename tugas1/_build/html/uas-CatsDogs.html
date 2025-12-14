@@ -406,18 +406,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-pemodelan-data">4. Modeling (Pemodelan Data)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-algoritma">4.1 Pemilihan Algoritma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desain-arsitektur-model">4.2 Desain Arsitektur Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-pelatihan-training">4.3 Konfigurasi Pelatihan (Training)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-pelatihan">4.1 Skenario Pelatihan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arsitektur-artificial-neural-network-ann">4.2 Arsitektur Artificial Neural Network (ANN)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-evaluasi">5. Evaluation (Evaluasi)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">5.1 Metrik Evaluasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil">5.2 Analisis Hasil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-proses-training-learning-curve">5.1 Analisis Proses Training (Learning Curve)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-final-metrics">5.2 Hasil Akhir (Final Metrics)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">6. Deployment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rencana-deployment">6.1 Rencana Deployment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-implementasi">6. Deployment (Implementasi)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-aplikasi">6.1 Fitur Aplikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bukti-implementasi">6.2 Bukti Implementasi</a></li>
 </ul>
 </li>
 </ul>
@@ -566,67 +566,90 @@ document.write(`
 </section>
 <section id="modeling-pemodelan-data">
 <h2>4. Modeling (Pemodelan Data)<a class="headerlink" href="#modeling-pemodelan-data" title="Link to this heading">#</a></h2>
-<p>Tahap ini adalah inti dari proses <em>machine learning</em> di mana algoritma diaplikasikan untuk mempelajari pola dari fitur audio yang telah diekstraksi.</p>
-<section id="pemilihan-algoritma">
-<h3>4.1 Pemilihan Algoritma<a class="headerlink" href="#pemilihan-algoritma" title="Link to this heading">#</a></h3>
-<p>Mengingat data berupa <em>time series</em> audio yang telah diekstraksi fiturnya (MFCC), model yang dipilih adalah <strong>Artificial Neural Network (ANN)</strong> atau <strong>Convolutional Neural Network (1D-CNN)</strong>.</p>
+<p>Pada tahap ini, arsitektur <em>Neural Network</em> dibangun dan dilatih menggunakan data yang telah diproses.</p>
+<section id="skenario-pelatihan">
+<h3>4.1 Skenario Pelatihan<a class="headerlink" href="#skenario-pelatihan" title="Link to this heading">#</a></h3>
+<p>Berdasarkan hasil eksekusi kode (log training), berikut adalah konfigurasi model yang diterapkan:</p>
 <ul class="simple">
-<li><p><strong>Alasan:</strong> Neural Network sangat baik dalam menangkap pola non-linear yang kompleks pada data spektrogram/MFCC audio dibandingkan algoritma klasik.</p></li>
+<li><p><strong>Jumlah Data:</strong> Total 267 sampel audio (213 Training, 54 Testing).</p></li>
+<li><p><strong>Input Shape:</strong> 40 Fitur (Berdasarkan ekstraksi MFCC).</p></li>
+<li><p><strong>Jumlah Epoch:</strong> 50 Iterasi.</p></li>
+<li><p><strong>Batch Size:</strong> 32.</p></li>
 </ul>
 </section>
-<section id="desain-arsitektur-model">
-<h3>4.2 Desain Arsitektur Model<a class="headerlink" href="#desain-arsitektur-model" title="Link to this heading">#</a></h3>
+<section id="arsitektur-artificial-neural-network-ann">
+<h3>4.2 Arsitektur Artificial Neural Network (ANN)<a class="headerlink" href="#arsitektur-artificial-neural-network-ann" title="Link to this heading">#</a></h3>
+<p>Model disusun menggunakan <em>Keras Sequential API</em> dengan struktur layer sebagai berikut untuk menangkap pola non-linear dari fitur MFCC:</p>
+<ol class="arabic simple">
+<li><p><strong>Input Layer:</strong> Menerima vektor 40 fitur MFCC.</p></li>
+<li><p><strong>Dense Layer 1:</strong> 256 Neuron, Aktivasi ReLU (Menangkap fitur global).</p>
 <ul class="simple">
-<li><p><strong>Input Layer:</strong> Menerima array fitur (jumlah koefisien MFCC).</p></li>
-<li><p><strong>Hidden Layers:</strong> Menggunakan lapisan <em>Dense</em> (Fully Connected) dengan fungsi aktivasi <strong>ReLU</strong> untuk mempelajari representasi fitur.</p></li>
-<li><p><strong>Output Layer:</strong> Satu neuron dengan fungsi aktivasi <strong>Sigmoid</strong> (karena ini klasifikasi biner: 0 atau 1 / Kucing atau Anjing).</p></li>
+<li><p><em>Dropout (0.3):</em> Untuk mencegah overfitting.</p></li>
 </ul>
-</section>
-<section id="konfigurasi-pelatihan-training">
-<h3>4.3 Konfigurasi Pelatihan (Training)<a class="headerlink" href="#konfigurasi-pelatihan-training" title="Link to this heading">#</a></h3>
+</li>
+<li><p><strong>Dense Layer 2:</strong> 128 Neuron, Aktivasi ReLU (Memperhalus fitur).</p>
 <ul class="simple">
-<li><p><strong>Loss Function:</strong> <code class="docutils literal notranslate"><span class="pre">Binary</span> <span class="pre">Crossentropy</span></code> (standar untuk klasifikasi biner).</p></li>
-<li><p><strong>Optimizer:</strong> <code class="docutils literal notranslate"><span class="pre">Adam</span></code> (adaptif dan efisien).</p></li>
-<li><p><strong>Metric:</strong> <code class="docutils literal notranslate"><span class="pre">Accuracy</span></code>.</p></li>
-<li><p><strong>Epochs:</strong> Jumlah iterasi pelatihan (misal: 50-100 epoch).</p></li>
+<li><p><em>Dropout (0.3):</em> Untuk mencegah overfitting.</p></li>
 </ul>
+</li>
+<li><p><strong>Dense Layer 3:</strong> 64 Neuron, Aktivasi ReLU.</p></li>
+<li><p><strong>Output Layer:</strong> 1 Neuron, Aktivasi <strong>Sigmoid</strong>.</p>
+<ul class="simple">
+<li><p><em>Alasan:</em> Output berupa probabilitas biner (0 s.d 1) dimana nilai mendekati 0 adalah Kucing, dan mendekati 1 adalah Anjing.</p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 <section id="evaluation-evaluasi">
 <h2>5. Evaluation (Evaluasi)<a class="headerlink" href="#evaluation-evaluasi" title="Link to this heading">#</a></h2>
-<p>Setelah model dilatih, performanya harus divalidasi menggunakan data uji (<em>Test Set</em>) yang tidak pernah dilihat model sebelumnya.</p>
-<section id="metrik-evaluasi">
-<h3>5.1 Metrik Evaluasi<a class="headerlink" href="#metrik-evaluasi" title="Link to this heading">#</a></h3>
+<p>Tahap ini mengevaluasi kinerja model berdasarkan hasil pelatihan selama 50 epoch dan pengujian terhadap data tes (<em>Unseen Data</em>).</p>
+<section id="analisis-proses-training-learning-curve">
+<h3>5.1 Analisis Proses Training (Learning Curve)<a class="headerlink" href="#analisis-proses-training-learning-curve" title="Link to this heading">#</a></h3>
+<p>Berdasarkan log pelatihan (<em>training history</em>), diamati perilaku model sebagai berikut:</p>
 <ul class="simple">
-<li><p><strong>Akurasi (Accuracy):</strong> Seberapa sering model menebak dengan benar secara keseluruhan.</p></li>
-<li><p><strong>Confusion Matrix:</strong> Melihat detail kesalahan prediksi (berapa banyak suara kucing diprediksi sebagai anjing, dan sebaliknya).</p></li>
-<li><p><strong>Classification Report:</strong> Menampilkan <em>Precision</em>, <em>Recall</em>, dan <em>F1-Score</em>.</p></li>
+<li><p><strong>Penurunan Loss:</strong> Model memulai dengan <em>Loss</em> yang sangat tinggi (~9.52 pada Epoch 1) dan berhasil turun secara signifikan menjadi stabil di angka ~0.2 - 0.3 pada Epoch ke-50. Ini menunjukkan model berhasil “belajar” dan meminimalkan kesalahan.</p></li>
+<li><p><strong>Peningkatan Akurasi:</strong> Akurasi validasi meningkat dari awal yang fluktuatif (sempat drop ke 38% di Epoch 2) namun kemudian stabil di angka tinggi (&gt;85%) mulai Epoch ke-5 hingga akhir.</p></li>
 </ul>
 </section>
-<section id="analisis-hasil">
-<h3>5.2 Analisis Hasil<a class="headerlink" href="#analisis-hasil" title="Link to this heading">#</a></h3>
+<section id="hasil-akhir-final-metrics">
+<h3>5.2 Hasil Akhir (Final Metrics)<a class="headerlink" href="#hasil-akhir-final-metrics" title="Link to this heading">#</a></h3>
+<p>Evaluasi akhir dilakukan menggunakan 20% data testing (54 file) yang tidak digunakan selama pelatihan.</p>
 <ul class="simple">
-<li><p>Apakah model mengalami <em>Overfitting</em> (bagus di training, buruk di testing)?</p></li>
-<li><p>Apakah model bias ke salah satu kelas (misal: jago menebak anjing tapi gagal menebak kucing)?</p></li>
+<li><p><strong>Akurasi Final (Test Accuracy): 88.89%</strong></p></li>
+<li><p><strong>Kesimpulan Evaluasi:</strong> Model memiliki performa yang sangat baik (“Good Fit”) untuk tugas klasifikasi ini, mengingat dataset yang digunakan relatif kecil (267 file). Tingkat akurasi mendekati 90% menunjukkan model mampu membedakan karakteristik suara anjing dan kucing dengan konsisten.</p></li>
 </ul>
 </section>
 </section>
-<section id="deployment">
-<h2>6. Deployment<a class="headerlink" href="#deployment" title="Link to this heading">#</a></h2>
-<p>Tahap terakhir adalah membuat model dapat digunakan oleh pengguna akhir melalui antarmuka grafis.</p>
-<section id="rencana-deployment">
-<h3>6.1 Rencana Deployment<a class="headerlink" href="#rencana-deployment" title="Link to this heading">#</a></h3>
+<section id="deployment-implementasi">
+<h2>6. Deployment (Implementasi)<a class="headerlink" href="#deployment-implementasi" title="Link to this heading">#</a></h2>
+<p>Untuk memenuhi kebutuhan bisnis (aksesibilitas pengguna), model dideploy menggunakan framework <strong>Streamlit</strong>.</p>
+<section id="fitur-aplikasi">
+<h3>6.1 Fitur Aplikasi<a class="headerlink" href="#fitur-aplikasi" title="Link to this heading">#</a></h3>
+<p>Aplikasi yang dibangun (<code class="docutils literal notranslate"><span class="pre">app.py</span></code>) memiliki fitur-fitur berikut untuk mendukung <em>Decision Support</em>:</p>
+<ol class="arabic simple">
+<li><p><strong>Sistem Upload:</strong> Pengguna dapat mengunggah file audio <code class="docutils literal notranslate"><span class="pre">.wav</span></code> sembarang.</p></li>
+<li><p><strong>Data Understanding Visualization:</strong> Aplikasi menampilkan dua grafik untuk membantu pengguna memahami data audio:</p>
 <ul class="simple">
-<li><p><strong>Platform:</strong> Streamlit (Framework Python untuk Web Apps Data Science).</p></li>
-<li><p><strong>Fitur:</strong></p>
-<ul>
-<li><p>Upload file audio (<code class="docutils literal notranslate"><span class="pre">.wav</span></code>).</p></li>
-<li><p>Visualisasi audio (Audio player &amp; Waveform).</p></li>
-<li><p>Tombol “Prediksi”.</p></li>
-<li><p>Output hasil klasifikasi (Kucing/Anjing) beserta tingkat keyakinan (confidence score).</p></li>
+<li><p><strong>Waveform (Time Domain):</strong> Menampilkan amplitudo suara terhadap waktu.</p></li>
+<li><p><strong>Mel-Spectrogram (Frequency Domain):</strong> Menampilkan intensitas frekuensi (“trafo”) yang menjadi dasar input bagi model untuk membedakan pola suara.</p></li>
 </ul>
 </li>
-</ul>
+<li><p><strong>Real-time Prediction:</strong> Model memberikan label “Kucing” atau “Anjing” beserta <strong>Confidence Score</strong> (Tingkat Keyakinan) dalam persentase.</p></li>
+</ol>
+</section>
+<section id="bukti-implementasi">
+<h3>6.2 Bukti Implementasi<a class="headerlink" href="#bukti-implementasi" title="Link to this heading">#</a></h3>
+<p>Berikut adalah alur penggunaan aplikasi:</p>
+<ol class="arabic simple">
+<li><p>User upload file audio.</p></li>
+<li><p>Sistem melakukan preprocessing (Load 3 detik, Extract MFCC).</p></li>
+<li><p>Model <code class="docutils literal notranslate"><span class="pre">.h5</span></code> memproses input.</p></li>
+<li><p>Hasil klasifikasi ditampilkan di layar dashboard.</p></li>
+</ol>
+<p><img alt="Deployment" src="_images/deploy1.png" />
+<img alt="Deployment" src="_images/deploy2.png" />
+<img alt="Deployment" src="_images/deploy3.png" /></p>
 </section>
 </section>
 </section>
@@ -708,18 +731,18 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-pemodelan-data">4. Modeling (Pemodelan Data)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pemilihan-algoritma">4.1 Pemilihan Algoritma</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#desain-arsitektur-model">4.2 Desain Arsitektur Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konfigurasi-pelatihan-training">4.3 Konfigurasi Pelatihan (Training)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skenario-pelatihan">4.1 Skenario Pelatihan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#arsitektur-artificial-neural-network-ann">4.2 Arsitektur Artificial Neural Network (ANN)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-evaluasi">5. Evaluation (Evaluasi)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metrik-evaluasi">5.1 Metrik Evaluasi</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-hasil">5.2 Analisis Hasil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-proses-training-learning-curve">5.1 Analisis Proses Training (Learning Curve)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-akhir-final-metrics">5.2 Hasil Akhir (Final Metrics)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">6. Deployment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rencana-deployment">6.1 Rencana Deployment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment-implementasi">6. Deployment (Implementasi)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fitur-aplikasi">6.1 Fitur Aplikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bukti-implementasi">6.2 Bukti Implementasi</a></li>
 </ul>
 </li>
 </ul>
